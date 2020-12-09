@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>js-1</title>
+        <!--
+        JavaScript 不提供任何内建的打印或显示函数。
+            JavaScript 能够以不同方式“显示”数据：
+
+                    使用 window.alert() 写入警告框
+                    使用 document.write() 写入 HTML 输出
+                    使用 innerHTML 写入 HTML 元素
+                    使用 console.log() 写入浏览器控制台
+    -->
+    <style>
+        /* #textInput:focus{
+            outline:none;
+            border-color:  red;
+        }  */
+    </style>
+        <script>
+            window.onload = function () {//优先加载
+                let domId = document.getElementById("demo");
+                domId.innerHTML = "Hello jss!!!";
+                window.alert("Hello js!!!");
+                //document.write("Hello js!!!");
+                console.log("Hello js!!!");
+            
+                let domClass = document.getElementsByClassName("demo")[0];
+                domClass.innerHTML="dom class";
+
+                let domTags = document.getElementsByTagName("h1")[0];
+               // domTags.style.display="none";//设置样式
+                domTags.setAttribute("class","demo");//设置属性值
+                console.log(domTags.getAttribute("class"));//获取属性值
+
+                let p = document.createElement("p");
+                domTags.after(p);//追加元素
+                //domTags.removeChild(p);//删除元素
+                console.log(domTags.previousSibling.previousSibling);
+                //console.log(domTags.nextSibling);
+                domTags.previousSibling.previousSibling.remove();//删除兄弟节点
+
+                let createP = document.getElementsByTagName("p")[1];
+                console.log(createP.previousSibling);
+
+                domTags.onclick=function(){
+                    createP.innerHTML="点击了标签元素!!!";
+                }
+                domTags.style.color="green";//设置样式
+
+        
+                domId.addEventListener('mouseover',function(){//鼠标悬浮
+                    domId.style.backgroundColor="red";
+                })
+
+                domId.addEventListener('mouseout',function () {//鼠标移开
+                    domId.style.backgroundColor="white";
+                })
+
+                domId.onmousedown=function(){//按下鼠标
+                    domId.style.color="green";
+                }
+
+                domId.onmouseup=function(){//松开鼠标
+                    domId.style.color="yellow";
+                }
+
+                let textInput = document.getElementsByTagName("input")[0];
+                console.log(textInput)
+                textInput.onkeydown=function(){
+                    textInput.style.color="green";
+                }
+                 textInput.onfocus=function(){
+                    textInput.style.outline="none";
+                     textInput.style.borderColor="blue";
+                     textInput.placeholder="onfocus";
+                 }
+                // textInput.addEventListener('focus',function () { 
+                //     textInput.style.borderColor="blue";
+                //     textInput.placeholder="onfocus";
+                //  })
+
+                 textInput.onblur=function(){
+                    textInput.style.borderColor="red";
+                    textInput.placeholder="onblur";
+                 }
+
+            };
+
+            let ul_element = document.createElement("ul");
+            let li_element = document.createElement("li");
+
+            function dateView(){
+                let date = new Date();
+                console.log(date.toLocaleString());
+                li_element.innerHTML= date.toLocaleString();
+            }
+            var timer = null;    
+            function CreateElement(n) {//在标签下新增子标签     ----点击事件
+                    debugger
+                    clearInterval(timer);
+                    let date = new Date();
+                    li_element.innerHTML= date.toLocaleString();
+                    timer = setInterval(dateView,1000);
+                    ul_element.appendChild(li_element);
+                    n.after(ul_element);
+              }    
+              function clearDateView(){
+                  clearInterval(timer);
+                  console.log("停止定时器");
+              }
+              
+            let a = "你好！";
+            let A ="你好A";
+            function AClick(n){
+                n.innerHTML=A;
+
+            }
+            function aClick(n){
+                n.innerHTML=a;
+
+            } 
+            let firstnameLastname= "aaaa";
+            console.log(firstnameLastname);
+            
+        </script>
+    </head>
+    <body>
+        <p id="demo" onclick="CreateElement(this)" title="我是id选择器"></p>
+        <p class="demo" ></p>
+        <h1>标签元素</h1>
+        onkeydown事件<input type="text" placeholder="aaaa" ></input>
+        <input type="button" onclick="clearDateView()" value="停止"></input>
+        <input type="button" onclick="CreateElement(this)" value="启动"></input>
+        <p onclick="AClick(this)">A</p>
+        <p onclick="aClick(this)">a</p>
+    </body>
+</html>
