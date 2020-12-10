@@ -124,6 +124,161 @@
             } 
             let firstnameLastname= "aaaa";
             console.log(firstnameLastname);
+
+            var sum = 2**9;//求幂 512 2的9次幂
+            console.log(sum)
+
+            var residue = 10%3;
+            console.log(residue);
+
+            var num1 =  1;
+            console.log("num1:"+num1++);//num1++  ++在后 先使用num1输出，再让num1自增加1
+            var num2 = num1;//此时num1为2，将num1的值赋值给num2
+            console.log("num2:"+ --num2);//--num2 --在前 先让num2自减1，再输出num2
+
+            var isType = typeof "null";//得出数据类型
+            console.log("isType:"+isType );
+            
+            var objStudent = {//对象
+                name:String("张三"),
+                age:Number(18)
+            }
+            console.log(objStudent)
+            let keysANDvalues = Object.entries(objStudent);
+            console.log(keysANDvalues)
+            let keys = Object.keys(objStudent);
+            console.log(keys)
+            let values = Object.values(objStudent);
+            console.log(values)
+
+            Object.entries(objStudent).forEach(e=>{
+                console.log(e[0])
+                console.log(e[1 ])
+            })
+
+            var objStudent = null;//清空对象
+            console.log(objStudent)
+
+            var objStudent = undefined;//清空对象
+            console.log(objStudent)
+
+            var stuType = typeof null;
+            console.log("typeof null:"+stuType)
+
+            var stuType = typeof undefined;
+            console.log("typeof undefined:"+stuType)
+
+            console.log("null == undefined:"+(null == undefined))
+            console.log("null === undefined:"+(null === undefined))
+
+            var arrDemo = [
+                "1",
+                "5",
+                "4",
+                "3",
+                "2",
+                "6"
+            ]
+            //打印数组
+            arrDemo.forEach(element => {
+                console.log(element)
+            });
+            //添加元素
+            arrDemo.push("7");
+            console.log(arrDemo)
+            let objDemo = {};
+            let keyArr = [];
+            let valArr = [];
+            arrDemo.sort()
+            arrDemo.forEach((item,index)=>{
+                if(index%2==0){
+                    keyArr.push(item);
+                }else{
+                    valArr.push(item);
+                }
+            });
+            console.log(keyArr);
+            console.log(valArr);
+            keyArr.forEach((item,index)=>{
+                objDemo[item]=valArr[index];
+                
+            })
+            if(!arrDemo.length%2==0){
+                    objDemo[keyArr[keyArr.length-1]]=keyArr[keyArr.length-1]
+                }
+            console.log(objDemo)
+
+            let objArr = Object.entries(objDemo).map((item,index)=>{
+                return{
+                    title:item[0],
+                    val:item[1],
+                    index
+                }
+            })
+            console.log(objArr)
+            //操作数组
+            console.log(arrDemo.join("-"))
+            //在数组末尾添加元素
+            arrDemo.push("aaa");
+            //在数组开头添加元素
+            arrDemo.unshift("bbb");
+            console.log(arrDemo);
+            //删除末尾的元素
+            let popElement = arrDemo.pop();
+            console.log(popElement)
+             //删除开头的元素
+            let shiftElement = arrDemo.shift();
+            console.log(shiftElement)
+            //删除并添加元素 从第三个元素开始删除4个元素，然后追加一个end元素
+            arrDemo.splice(3,4,"end");
+            console.log(arrDemo);
+            //从第2个元素位置开始剪切到第三个元素，得到新数组
+            let newArrDemo = arrDemo.slice(0,4);
+            console.log(newArrDemo);
+            //反转数组
+            console.log( newArrDemo.reverse());
+            newArrDemo.shift();
+            console.log(Math.min.apply(null,newArrDemo))
+            console.log(Math.max.apply(null,newArrDemo))
+            
+            newArrDemo.unshift("aaa")
+            //过滤数组
+            let filterArr = newArrDemo.filter(item=>{
+                if(!isNaN(Number(item))){
+                    return item;
+                }
+            }).map(item=>Number(item))
+            console.log(filterArr)
+            //every()，当 所有 数组元素都通过测试，符合>1的条件 ,则返回true
+            console.log(filterArr.every(item=>{
+                return Number(item)>1;
+            }))
+            //some(),当 有一个 数组元素满足测试条件，符合>1的条件，则返回 true
+            console.log(filterArr.some(item=>{
+                return Number(item)>1;
+            }))
+            
+            console.log(Number(9).valueOf());
+
+            console.log(Number(66).toFixed(2))//输出66.00,表示输出小数位数
+            console.log(Number(66).toPrecision(4))//输出66.00，表示整数位数+小数位数
+
+            console.log(typeof "aa")
+
+            function foo(){
+                var local =1;
+                function bar() {
+                    local++;
+                    return local;
+                }
+                return bar;
+            }
+            foo.local=2;
+            var func = foo();
+           
+            console.log(func());
+          
+
             
         </script>
     </head>

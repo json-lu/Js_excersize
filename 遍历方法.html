@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历方法</title>
+</head>
+<body>
+    <script>
+        //for遍历
+        var arr = ["1","2","3","4",5,{name:"张三",age:18,totals:undefined}]
+        console.log(arr)
+        for(let i = 0;i<arr.length;i++){
+            if(i==1){
+                continue;
+            }
+            console.log(arr[i],typeof arr[i])
+        }
+        //for/in - 遍历对象属性
+        var obj = arr[arr.length-1];
+        for (const key in obj) {
+           let value = obj[key];
+           console.log(key,value)
+        }
+        for (const key in obj) {
+            if(obj[key]){
+                console.log("value",obj[key])
+            }
+        }
+        //while  - 当指定条件为 true 时循环一段代码块
+        var i =0;
+        while(i<arr.length){
+            if(i==arr.length-1){
+                break;
+            }
+            console.log(arr[i]);
+            i++;
+        }
+        //do/while - 当指定条件为 true 时循环一段代码块
+        var j = 0;
+        do{     
+            if(j==1){
+                j++;
+                continue;
+            }      
+            console.log(arr[j]);
+            j++;
+        }while(j<arr.length);
+    </script>
+    
+</body>
+</html>

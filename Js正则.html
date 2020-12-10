@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js正则</title>
+</head>
+<body>
+    <script>
+        var str ="hello WORLD!";
+        console.log(str.search(/world/i));//忽略大小写
+        var replace = str.replace(/world/i,"pattern");
+        console.log(str);
+        console.log(replace);
+        console.log(str.match(/l/i))
+        console.log(str.match(/l/g))
+        console.log(str.match(/L/m))
+    </script>
+</body>
+</html>

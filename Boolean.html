@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean</title>
+</head>
+<body>
+    <script>
+        let boolean = Boolean(NaN);
+        console.log(boolean);//false
+        boolean = Boolean(null);
+        console.log(boolean);//false
+        boolean = Boolean(undefined);
+        console.log(boolean);//false
+        boolean = Boolean(0);
+        console.log(boolean);//false
+        boolean = Boolean("");
+        console.log(boolean);//false
+        boolean = Boolean(-0);
+        console.log(boolean);//false
+        boolean = Boolean(0);
+        console.log(boolean);//false
+        boolean = 10>7?"too young too simple":"too old";
+        console.log(boolean);
+    </script>
+</body>
+</html>

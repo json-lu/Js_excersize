@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js数组循环方法</title>
+</head>
+<body>
+    <script>
+        //定义数组   var 数组名 = [数组元素1,....,数组元素n];
+        var demoArr = ["张三","json","jackson","gson"];
+        //打印数组
+       console.log(demoArr);
+        //在末尾添加元素 push(新增元素...可多个)
+        demoArr.push("end");
+        //在元素开头添加元素 unshift(新增元素...可多个)
+        demoArr.unshift("start")
+        //在指定位置添加 在第二个元素后面添加元素 （"李四","王五","亚瑟王"） splice(第几个元素开始，删除几个元素，新增的元素)
+        demoArr.splice(2,0,"李四","王五","亚瑟王");
+        //打印数组
+        console.log(demoArr);
+        //遍历数组 foreach(item,index)
+        console.log("遍历数组元素:");
+        demoArr.forEach(item=>{
+            console.log(item);
+        })
+        //删除数组元素
+        //删除末尾元素 弹出元素 pop()
+        demoArr.pop();
+        //删除开头元素 shift()
+        demoArr.shift();
+        console.log(demoArr);
+        //从第4个元素开始删除3个元素 删除全部英文名称
+        demoArr.splice(4,3);
+        console.log(demoArr);
+        //剪切数组为新数组 从索引位置1开始，到索引3（不包括），所以新数组是 [demoArr[1],demoArr[2]]
+        let newArr = demoArr.slice(1,3);
+        console.log(newArr);
+        //打印成字符串，使用逗号隔开每个元素
+        console.log(newArr.toString());
+        //打印成字符串，自定义符号隔开每个元素
+        console.log(newArr.join("-"));
+        //合并两个数组
+        console.log(newArr.concat(demoArr));
+        //遍历数组 for(var i =0;i<arr.length;i++)
+        for(var i = 0;i<demoArr.length;i++){
+            console.log(demoArr[i]);
+        }
+        //map(可传入函数方法func) 格式化数组
+        let demoMapArr = demoArr.map(demoMap);
+        function demoMap(item,index){
+            return {
+                username:item,
+                age:20,
+                index,
+            }
+        }
+        console.log(demoMapArr);
+        var objArr = [{name:"张三",Age:18,totals:10.50},{name:"李四",age:10,totals:10.50},{name:"王五",age:20,totals:10.50}]
+        //map方法 格式化数组 map(item,index)
+        let newMapArr = objArr.map((item,index)=>{
+            return{
+                username:item.name,
+                age:item.age,
+                totals:item.totals,
+                index,
+            }
+        })
+        console.log(newMapArr);
+        //filters(item,index) 过滤数组
+        let filterArr = newMapArr.filter((item,index)=>{
+            return item.age >=18 && index>1;
+        })
+        console.log(filterArr);
+         //filters(item,index) 过滤数组
+        filterArr = newMapArr.filter(filterFnc);
+        function filterFnc(item) {
+            return item.age>10;
+        }
+        console.log(filterArr);
+        //every(item,index) 当数组全部元素都通过测试时，返回true
+        let booleanMap = newMapArr.every((item,index)=>{
+            return index >=0 || item.username=="张三";
+        })
+        console.log(booleanMap);
+        //some(item,index) 当数组元素中有一个通过测试时，返回true
+         booleanMap = newMapArr.some((item,index)=>{
+            return index >=0 && item.username=="张三";
+        })
+        console.log(booleanMap);
+        /*
+        *reduce(prev,item,index) 计算总和    
+                prev第一次是第一个元素,
+                后面的prev都是上一项的求和
+        */
+        let sum = newMapArr.reduce((prev,item,index)=>{
+            console.log(index+"---"+Object.entries(prev));//index :0 ----prev:Object
+            return (prev.totals?prev.totals:prev)+item.totals;
+        })
+        console.log(sum);
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math方法常用</title>
+</head>
+<body>
+    <script>
+        //小数向上取整 ceil() 天花板
+        let nub = Math.ceil(1.8);
+        console.log(nub);
+        //小数向下取整 floor() 地板
+        nub = Math.floor(1.8);
+        console.log(nub);
+        //四舍五入 round
+        nub = Math.round(1.8);
+        console.log(nub);
+        //随机数 random() 返回0-1之间的随机数
+        nub = Math.random()*10;
+        console.log(nub);
+        console.log(getRandomIntInclusive(0,10));
+        //圆周率 PI
+        nub = Math.PI;
+        console.log(nub);
+        //幂
+        nub = Math.pow(2,2);
+        console.log(nub);
+        //返回绝对值
+        nub = Math.abs(-1.8);
+        console.log(nub);
+        //平方根
+        nub = Math.sqrt(4);
+        console.log(nub);
+
+        //0-10的随机整数，包含0和10
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值 
+        }
+    </script>
+</body>
+</html>
