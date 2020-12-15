@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>This关键字</title>
+    </head>
+    <body>
+        <p>点击我</p>
+        <script>
+            //window对象
+            console.log(this);
+
+            //普通对象中的this
+            var obj = {
+                name: "tome",
+                age: 11,
+                nickname: function () {
+                    //指的是当前对象,谁调用我，this就是谁
+                    console.log(this);
+                    return this.name + "Nk";
+                },
+            };
+            console.log(obj.nickname());
+
+            //在函数中
+            function sum(a, b) {
+                //全局对象 window
+                console.log(this);
+                return a + b;
+            }
+            sum(1, 2);
+
+            function strict() {
+                "use strict";
+                console.log(this);
+            }
+            strict();
+
+            let htmlDom = document.getElementsByTagName("html")[0];
+            let bodyDom = document.getElementsByTagName("body")[0];
+            console.log(htmlDom);
+            console.log(bodyDom);
+            htmlDom.onclick = () => {
+                console.log(this);
+                let isClick = window.confirm("不要点击我啦！");
+                if (isClick) {
+                    let p = document.createElement("p");
+                    let p_content = document.createTextNode("不听话！");
+                    p.append(p_content);
+                    bodyDom.appendChild(p);
+                    console.log("点击确定!");
+                } else {
+                    console.log("点击取消!");
+                }
+            };
+            let pDom = document.getElementsByTagName("p")[0];
+            console.log(pDom);
+            pDom.addEventListener('click',function (e){
+                pDom.style.display="none";
+                e.stopPropagation();//冒泡，执行最上层的事件
+                console.log(this);
+            })
+            //let 可以先声明后赋值  
+            let a;
+            a =1;
+            console.log(a);  
+            //const必须声明的同时赋值
+            const b = 1;
+            console.log(b);
+            const date = Date.now();
+            console.log(date)
+        </script>
+    </body>
+</html>

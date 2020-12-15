@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>函数</title>
+    </head>
+    <body>
+        <script>
+            //call()函数
+            var person = {
+                fullname: function (age, sex) {
+                    return this.firstName + "is" + this.lastName + ",age:" + age + ",sex:" + sex;
+                },
+            };
+            var person1 = {
+                firstName: "tom",
+                lastName: "james",
+            };
+            var person2 = {
+                firstName: "jack",
+                lastName: "ious",
+            };
+            let str = person.fullname.call(person2, 11, 1);
+            console.log(str);
+
+            //apply()函数
+            var animals = {
+                eat: function (name, type) {
+                    return name + this.foods + "," + this.play + ",is" + type;
+                },
+            };
+            var cat = {
+                foods: "fish",
+                play: "woolen",
+            };
+            var dog = {
+                foods: "meat",
+                play: "UFO",
+            };
+            //let ani = animals.eat.apply(cat,["小白","猫"]);
+            let ani = animals.eat.apply(dog, ["小黑", "狗"]);
+            console.log(ani);
+
+            //bind()函数
+            var student = {
+                score: function (subject, scoree) {
+                    return this.name + this.classes + "," + subject + "," + scoree;
+                },
+            };
+
+            var student1 = {
+                name: "小明",
+                classes: "2001",
+            };
+
+            var student2 = {
+                name: "小红",
+                classes: "2002",
+            };
+
+            let stu = student.score.bind(student2, "math",99)();
+            console.log(stu);
+
+            //函数自调用 在函数后跟()
+            (function a(){
+                console.log("函数自调用!")
+            })();
+            
+            //打印d，就是调用函数add(),从上至下，返回的是函数c,所以d的结果是函数c，当我们需要调用函数c时，只需要在d的后面跟上()，等同于调用函数c
+            let d = (function add(){
+                let c = function(a,b){
+                    return a+b;
+                }
+                return c;
+            })();
+            console.log(d); //有return 返回函数c
+            console.log(d(1,2));//调用函数c           
+            console.log(d(3,5));//调用函数c  
+
+
+            (()=>{
+                var age = 1;
+                console.log(age);
+            })();
+            //age =2;//window.age = 2;
+            //console.log(age);//报错
+            
+            
+            
+        </script>
+    </body>
+</html>

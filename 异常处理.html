@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异常处理</title>
+</head>
+<body>
+    <script>
+        try{
+            addlert();
+        }catch(err){//是个ERROR对象 name,message属性
+            console.log(err)
+        }finally{
+            console.log("我一定会执行")
+        }
+
+        //手动抛出异常
+        try{
+            if (5<10)
+            throw "我有异常了!catch捕获一下我这个异常!";
+        }catch(err){//直接是抛出的异常信息
+            console.log(err)
+        }finally{
+            console.log("我一定会执行")
+        }
+    </script>
+</body>
+</html>

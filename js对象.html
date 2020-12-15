@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>js对象</title>
+    </head>
+    <body>
+        <script>
+            var person = new Object();
+            person.name = "aaa";
+            console.log(person);
+
+            var person = Object.create(person);
+            person.age = "aaa";
+            console.log(person);
+
+            var person = {
+                name: "aaa",
+                age: 18,
+                fullname: () => person.name + "_" + person.age,
+                get getName() {
+                    return person.name + 1;
+                },
+                set setName(arg) {
+                    this.name = arg;
+                },
+            };
+            console.log(person);
+            console.log(person.fullname());
+            person.text = (arg) => console.log("你好" + arg);
+            console.log(person.text(person.name));
+
+            //访问 JavaScript 属性
+            person.name = "张三";
+            person["age"] = 19;
+            console.log(person);
+            //for in遍历对象
+            for (const key in person) {
+                if (person[key]) {
+                    const element = person[key];
+                    console.log(element);
+                }
+            }
+
+            //删除属性
+            delete person.age;
+            console.log(person);
+
+            //添加属性
+            person.age = 11;
+            console.log(person);
+
+            //// 使用 getter 来显示来自对象的数据：
+            console.log(person.getName);
+
+            // 使用 setter 来设置对象属性：
+            person.setName = "李四";
+
+            //// 使用 getter 来显示来自对象的数据：
+            console.log(person.getName);
+
+            Object.defineProperty(person, "getAge", {
+                get: function () {
+                    return ++person.age;
+                },
+            });
+
+            console.log(person.getAge);
+            let map = new Map([
+                [1, "X"],
+                [2, "Y"],
+                [3, "Z"],
+            ]);
+            for (const m of map) {
+                console.log(m[0] + ":" + m[1]);
+            }
+            let set = new Set(["A", "B", "C"]);
+            for (const m of set) {
+                console.log(m);
+            }
+            //构造器
+            function Person(name, age, sex) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+
+            Person.text = "你好" + Person.name; //设置无效
+            Person.amount = () => 1 + 2; //设置无效
+
+            //向构造器添加属性或方法
+            Person.prototype.discription = "给原型对象添加属性";
+            Person.prototype.methodStr = () => "给原型对象加方法";
+
+            let p = new Person("王五", 19, 1);
+            //p.msg = "你好"+p.name+p.discription;
+            //p.totals=()=>1+2;
+            p.msg = p.text; //拿不到值 undefined
+            console.log(p);
+
+            let p2 = new Person("tom", 19, 1);
+            p2.msg = "你好" + p2.name + p2.methodStr();
+            p2.totals = () => 1 + 2;
+            console.log(p2);
+
+            console.log(p2.discription);
+            let arr = Object.getOwnPropertyNames(p2);
+            console.log(arr);
+            let __proto__ = Object.getPrototypeOf(p2);
+            console.log(__proto__);
+            console.log(p2.__proto__ === Person.prototype); //true 每个对象（除了null）都会有的属性 __proto__,这个属性指向该对象的原型
+
+            let objPerson = new Person.prototype.constructor("jack", 18, 2);
+            console.log(objPerson);
+            Object.seal(objPerson);
+            objPerson.name="张三";
+            console.log(objPerson)
+
+            
+
+            console.log(Object.prototype.__proto__);//null
+
+            //原型链的概念：由相互关联的原型组成的链状结构就是原型链
+        </script>
+    </body>
+</html>

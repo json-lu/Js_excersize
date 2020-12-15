@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+<body>
+    <script>
+    //全局变量  ---属于window对象 
+    var age = 11;//等同于 window.age = 11;
+     
+     toPerson();
+
+     //局部变量
+     function toPerson() {
+        var person = "张三";
+        document.write(person,age,typeof person);
+        //修改全局变量
+        age = 1;
+        //自动全局
+        sex = '男';
+       }
+
+    //尝试访问局部变量
+    //document.write(person);     //Uncaught ReferenceError: person is not defined ,访问不到，提示person变量未定义  
+    sex = '女';
+    document.write("</br>"+window.age+window.sex,typeof window.sex);
+
+    </script>
+</body>
+</html>
