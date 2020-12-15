@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax_原生异步请求</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="username" placeholder="请输入用户名!" onkeyup="this.value=this.value.replace(/\s/g,'')"/><br/>
+        <input type="text" name="password" placeholder="请输入密码!" onkeyup="this.value=this.value.replace(/\s/g,'')"/><br/>
+        <input type="button" id="btn" value="提交"/>
+    </form>
+    <script>
+        var btn = document.getElementById("btn");
+        var username = document.getElementsByName("username")[0];
+        var password = document.getElementsByName("password")[0];
+        btn.onclick=function(){            
+            let data =  {
+                "username":username.value,
+                "password" :password.value
+            }
+            /*
+                同步请求：
+                    需要等待响应结束，才可以进行下一步操作，如果响应时间太长，对于用户来说是不友好的
+                异步请求:
+                    不需要等待响应结束，期间可以进行其他操作
+            */
+            var xmlHttp;//1、创建异步请求对象
+            if(window.XMLHttpRequest){//所有现代浏览器（Chrom、IE7+、Firefox、Safari 以及 Opera）都有内建的 XMLHttpRequest 对象。
+                xmlHttp = new XMLHttpRequest();
+            }else{//老版本的 Internet Explorer（IE5 和 IE6）使用 ActiveX 对象：
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            let url = "http://localhost:8080/ajax?username="+username.value+"&password="+password.value;//请求url
+            let method = "GET";//请求方式
+            let async = true;//true:异步，false:同步
+
+            xmlHttp.open(method,url,async);
+            xmlHttp.send();
+
+            xmlHttp.onreadystatechange = function () {
+                console.log(this)
+                if(this.readyState  == 4 && this.status == 200){
+                    document.write(this.response);
+                }
+              }
+            
+    }
+        
+    </script>
+</body>
+</html>

@@ -6,11 +6,66 @@
     <title>浏览器对象模型</title>
 </head>
 <body>
-    <script>
-        console.log(window.innerWidth);
-        console.log(window.innerHeight);
+
+    <iframe name="iframe" id="iframe" style="width: 50vw;height: 50vh;">
         
+    </iframe>
+    <div onclick="closeIframe()">×</div>
+    <div onclick="openIframe()">√</div>
+    <div onclick="closeWindow()">关闭页面</div>
+    <script>
+        console.log(window);
+        function closeIframe() {
+            let IframeClose = document.getElementsByTagName("iframe")[0];
+            console.log(IframeClose);
+            IframeClose.setAttribute("src"," ");
+          }
+          function openIframe() {
+            let IframeOpen = document.getElementsByTagName("iframe")[0];
+            console.log(IframeOpen);
+            IframeOpen.setAttribute("src","https://www.baidu.com");
+          }
+          function closeWindow() {
+              console.log(window)
+              window.location.href="about:blank";
+              window.close();
+            }
+
+
+        //浏览器窗口的内宽度
+        console.log(window.innerWidth);
+        //浏览器窗口的内高度
+        console.log(window.innerHeight);
+
+        //对于 Internet Explorer 8, 7, 6, 5：
+        //浏览器窗口的内宽度
+        console.log(document.documentElement.clientWidth);
+        //浏览器窗口的内宽度
+        console.log(document.documentElement.clientHeight);
+
+        //或者
+        console.log(document.body.clientWidth);
+        console.log(document.body.clientHeight);
+
+        //通用兼容写法
+        var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+        
+        var height = window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight
+
+        console.log(width);
+        console.log(height);
+        
+        //打开新窗口
+        window.open("https://www.baidu.com","iframe");
+        console.log(window.screen)       
+        console.log(window.location.href)
+         
         
     </script>
+    
 </body>
 </html>

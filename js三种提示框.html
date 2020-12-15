@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>js三种提示框</title>
+    </head>
+    <body>
+        <script>
+            //警告
+            window.alert("你好，\n你的异常行为已被记录!");
+            //提示框
+            var inputMsg = window.prompt("请验证口令!请输入：");
+            console.log(inputMsg);
+            let isAuth = inputMsg == "你好";
+            if (isAuth) {
+                prompt("口令正确!");
+            } else {
+                prompt("口令错误!");
+            }
+            //确认框
+            var isOk = window.confirm("是否需要执行页面销毁!");
+            if (isOk) {
+                prompt("页面即将销毁!");
+                window.close();
+            } else {
+                prompt("停止页面销毁!");
+            }
+        </script>
+    </body>
+</html>

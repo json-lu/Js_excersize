@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Timing 定时事件</title>
+    </head>
+    <body>
+        <div onclick="myTimeOut()">点击提示欢迎，只执行一次</div>
+        <div onclick="stopTimeOut()">点击停止定时任务，需要在三秒内点击</div>
+        <div onclick="clearTimer()">点击停止定时任务</div>
+        <script>
+            /*
+            Timing 事件
+            window 对象允许以指定的时间间隔执行代码。
+
+            这些时间间隔称为定时事件。
+
+            通过 JavaScript 使用的有两个关键的方法：
+
+            setTimeout(function, milliseconds)
+            在等待指定的毫秒数后执行函数。
+            setInterval(function, milliseconds)
+            等同于 setTimeout()，但持续重复执行该函数。
+        */
+            var timeOut;
+            //在三秒后执行欢迎
+            function myTimeOut() {
+                console.log("开始执行定时任务!")
+                clearTimeout(timeOut);
+                 timeOut = setTimeout(() => {
+                    alert("欢迎!,执行定时任务,执行一次!");
+                }, 3000);
+            }
+            function stopTimeOut() {
+                console.log("清除定时任务!")
+                //清除定时任务
+                clearTimeout(timeOut);
+            }
+
+            //让欢迎每一秒执行一次
+            var myTimer = setInterval(() => {
+                alert("欢迎，每秒都执行一次!")
+            }, 5000);
+
+            function clearTimer() {
+                console.log("清除定时任务!")
+                clearInterval(myTimer);
+              }
+
+        </script>
+    </body>
+</html>
