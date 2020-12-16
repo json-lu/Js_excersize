@@ -1,13 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON</title>
-</head>
-<body>
-    <script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JSON</title>
+    </head>
+    <body>
+        <script>
+            /*
+        *JSON: JavaScript Object Notation（JavaScript 对象标记法）。
+        *JSON 是一种存储和交换数据的语法。
+        *JSON 是通过 JavaScript 对象标记法书写的文本。
 
-    </script>
-</body>
+        什么是 JSON？
+        JSON 指的是 JavaScript 对象标记法（JavaScript Object Notation）
+        JSON 是一种轻量级的数据交换格式
+        JSON 具有自我描述性且易于理解
+        JSON 独立于语言*
+
+
+        在 JSON 中，值必须是以下数据类型之一：(JSON不能处理undefined)
+            
+            字符串
+            数字
+            对象（JSON 对象）
+            数组
+            布尔
+            null
+
+        在 JavaScript 中，以上所列均可为值，外加其他有效的 JavaScript 表达式，包括：
+
+            函数
+            日期
+            undefined
+        */
+            let obj = {
+                name: "张三",
+                age: 18,
+                sex: 1,
+                //"123":"1",
+                //1:2,
+            };
+            console.log(obj);
+            let jsonText = JSON.stringify(obj); //js对象转JSON字符串
+            console.log(jsonText);
+
+            let jsObj = JSON.parse(jsonText); //JSON字符串转js对象
+            console.log(jsObj);
+            for (const key in jsObj) {
+                if (jsObj[key]) {
+                    const element = jsObj[key];
+                    console.log(element);
+                }
+            }
+            console.log(jsObj.name); //对象.属性名
+
+            let newObj = { ...jsObj }; // {...对象} 深拷贝对象 [...数组对象] 深拷贝数组
+            newObj.sex = 2;
+            console.log(newObj);
+            console.log(jsObj);
+
+            localStorage.setItem("obj", jsonText); //把数据存储在本地中
+            jsonText = localStorage.getItem("obj"); //根据key获取指定的本地数据
+            jsObj = JSON.parse(jsonText);
+            console.log(jsObj);
+            //localStorage.removeItem("obj");//根据key删除指定的本地数据
+            //localStorage.clear();//删除全部的本地存储数据
+
+            jsObj = JSON.parse(jsonText, (key, value) => {
+                //可以修改JSON字符串转js对象中的值
+                if (key == "name") {
+                    //在key为name的值后面追加*
+                    return value + "*";
+                } else {
+                    return value;
+                }
+            });
+            console.log(jsObj);
+
+            let arr = [1, 2, 3, 4];
+            console.log(arr);
+            let arrText = JSON.stringify(arr);
+            console.log(arrText);
+
+            let text = '{"firstname":"Bob","lastname":"steven","fullname": "function(){return this.firstname+this.lastname;}"}';
+        
+            let mObj = JSON.parse(text);
+            mObj.fullname=eval("("+mObj.fullname+")");//将字符串转成js来解析
+            console.log(mObj.fullname())
+
+            let jsText = 'alert("你好！")';
+            console.log(jsText)
+            let alertMsgJs = eval("("+jsText+")");
+            
+            
+            
+
+
+            Object.entries(obj).forEach((element) => {
+                console.log(element[0]);
+                console.log(element[1]);
+            });
+        </script>
+    </body>
 </html>
