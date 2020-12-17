@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>es6特性_let和const</title>
+</head>
+<body>
+    <script>
+        if(true)
+        {
+            function blockScope() { 
+                alert("blockScope！！！！")
+             }
+             blockScope();
+        }
+
+        const a = 1;
+        console.log(a);
+        try{
+            a="2122";//Uncaught TypeError: Assignment to constant variable. 未捕获的TypeError：分配给常数变量。
+        }catch(err){
+            console.log(err)
+            
+        }
+        
+
+
+        //不存在变量自动提升
+        {
+            try{
+            b = 2;//Uncaught ReferenceError: Cannot access 'b' before initialization 未捕获的ReferenceError：初始化前无法访问“ b”
+            let b;
+            console.log(b);
+            }catch(error){
+                console.log(error);
+            }finally{
+                console.log("捕获异常成功!变量未初始化!")
+            }
+        }
+
+        const bconst=0;//声明常量必须赋值初始化
+        console.log(bconst);
+        
+        //var 存在变量提升
+        c = 1;
+        var c;
+        console.log(c);
+        
+        //访问块级作用域中的变量
+        {
+            let d = 1;
+            var e = 2;
+            function hello(){
+                return insane = "hello world!!!"
+            };
+            {   
+                hello();
+                console.log(insane)
+            }
+        }
+
+        var objText = "[{\"type\":\"SEARCH\",\"tips\":\"请输入关键词搜索\"},{\"type\":\"SWIPE\",\"items\":[{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/864247d4712020-12-07 16-05-49.jpg\",\"prdno\":\"16201\",\"link\":\"\",\"fpId\":\"80\"},{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/11752b08a22020-12-07 16-05-54.png\",\"link\":\"\",\"fpId\":\"81\"},{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/57dc0a57b52020-12-07 16-05-59.jpg\",\"link\":\"\",\"fpId\":\"82\"}]},{\"type\":\"HOTCLASS\",\"items\":[{\"cat\":{\"id\":77,\"catname\":\"特卖专区\",\"parentid\":76,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/3ed40885112020-12-07 17-18-06.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":75,\"parent2\":76,\"fpId\":\"105\",\"creator\":6,\"creationTime\":1607332690000,\"children\":null,\"oldFpId\":null},\"goods\":[\"15924\",\"14253\",\"16506\",\"14812\",\"14551\",\"16501\"],\"key\":0},{\"cat\":{\"id\":71,\"catname\":\"高佣专区\",\"parentid\":70,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/c1753f8a4f2020-12-07 17-11-59.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":69,\"parent2\":70,\"fpId\":\"99\",\"creator\":6,\"creationTime\":1607332365000,\"children\":null,\"oldFpId\":null},\"goods\":[\"14253\",\"14812\"],\"key\":1},{\"cat\":{\"id\":74,\"catname\":\"精品推荐\",\"parentid\":73,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/4d2836ca272020-12-07 17-16-10.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":72,\"parent2\":73,\"fpId\":\"102\",\"creator\":6,\"creationTime\":1607332575000,\"children\":null,\"oldFpId\":null},\"goods\":[\"15924\",\"14551\"],\"key\":2}]},{\"type\":\"PRDLIST\",\"items\":[\"15924\",\"14812\",\"14551\",\"15989\"]}]";
+
+        console.log(objText);
+        var obj = JSON.parse(objText);
+        console.log(obj)
+
+
+        //解构赋值
+        //基本用法
+        let [h] = [1];
+        console.log(h)
+        let [q,w,r] = ["a","b"]
+        console.log(q)
+        console.log(w)
+        console.log(r)//undefind
+
+        //对象的解构赋值
+        obj = {name:"tom",age:12,play:()=>console.log("running")};
+
+        let {name,age,sex} = obj;
+        console.log(name)
+        console.log(age)
+        console.log(sex)
+
+        const {play} = obj;
+        play();
+
+        const {log} = console;
+        log('hello')
+
+        //const {open} = window;
+        //open("https://www.baidu.com")
+
+        let {k:K=1} = {};
+        console.log(K);
+        
+        //数组的解构赋值
+        let arr = [1,2,3,4,5];
+        
+        let {0:one,1:two,2:three,3:four,4:five} = arr;
+        console.log(one)
+        console.log(two)
+        console.log(three)
+        console.log(four)
+        console.log(five)
+
+        //字符串解构赋值
+       const [z,x,v] = 'hello';
+        console.log(z)
+        console.log(x)
+        console.log(v)
+        const {length:len} = 'hello';
+        console.log(len)
+
+        const map = new Map();
+        map.set("first","hello");
+        map.set("second","world");
+
+        for (const [key,value] of map) {
+            console.log(key+" is "+value)
+            
+        }
+        
+        
+        
+        
+        
+
+        
+        
+
+
+
+        
+               
+    
+        
+        
+        
+    </script>
+</body>
+</html>

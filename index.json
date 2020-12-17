@@ -1,0 +1,18 @@
+{
+    "code": 200,
+    "msg": "请求成功",
+    "data": {
+        "total": 1,
+        "records": [
+            {
+                "id": 2,
+                "pageid": "home",
+                "pagename": "首页",
+                "configs": "[{\"type\":\"SEARCH\",\"tips\":\"请输入关键词搜索\"},{\"type\":\"SWIPE\",\"items\":[{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/864247d4712020-12-07 16-05-49.jpg\",\"prdno\":\"16201\",\"link\":\"\",\"fpId\":\"80\"},{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/11752b08a22020-12-07 16-05-54.png\",\"link\":\"\",\"fpId\":\"81\"},{\"linkType\":\"\",\"imageUrl\":\"/uploads/img/2020/12/07/57dc0a57b52020-12-07 16-05-59.jpg\",\"link\":\"\",\"fpId\":\"82\"}]},{\"type\":\"HOTCLASS\",\"items\":[{\"cat\":{\"id\":77,\"catname\":\"特卖专区\",\"parentid\":76,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/3ed40885112020-12-07 17-18-06.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":75,\"parent2\":76,\"fpId\":\"105\",\"creator\":6,\"creationTime\":1607332690000,\"children\":null,\"oldFpId\":null},\"goods\":[\"15924\",\"14253\",\"16506\",\"14812\",\"14551\",\"16501\"],\"key\":0},{\"cat\":{\"id\":71,\"catname\":\"高佣专区\",\"parentid\":70,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/c1753f8a4f2020-12-07 17-11-59.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":69,\"parent2\":70,\"fpId\":\"99\",\"creator\":6,\"creationTime\":1607332365000,\"children\":null,\"oldFpId\":null},\"goods\":[\"14253\",\"14812\"],\"key\":1},{\"cat\":{\"id\":74,\"catname\":\"精品推荐\",\"parentid\":73,\"level\":3,\"enabled\":\"1\",\"orderindex\":20,\"icon\":\"/uploads/img/2020/12/07/4d2836ca272020-12-07 17-16-10.png\",\"isvirtual\":0,\"istype\":\"2\",\"parent1\":72,\"parent2\":73,\"fpId\":\"102\",\"creator\":6,\"creationTime\":1607332575000,\"children\":null,\"oldFpId\":null},\"goods\":[\"15924\",\"14551\"],\"key\":2}]},{\"type\":\"PRDLIST\",\"items\":[\"15924\",\"14812\",\"14551\",\"15989\"]}]",
+                "fpIds": "80,81,82",
+                "creator": 9,
+                "creationTime": 1607332999000
+            }
+        ]
+    }
+}
